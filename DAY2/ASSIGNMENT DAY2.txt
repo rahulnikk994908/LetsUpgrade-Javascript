@@ -1,0 +1,63 @@
+                                 ASSIGNMENT DAY 2 ....
+
+QUE.1  PROGRAM TO SEARCH FOR A PARTICULAR CHARACTER IN A STRING.
+
+CODE->
+      let string1="javascript";
+      let ch='a';
+      for(let i=0;i<string.length;i++)
+      {
+       if(strings1[i]==ch)
+       {
+        console.log(i+1) ;              //here we search position 
+       }
+      }
+
+
+QUE.2  PROGRAM TO CONVERT MINUTES TO SECONDS.
+
+CODE-> 
+      let minutes=window.prompt("enter total minutes:");  
+      let seconds;
+      seconds=minutes*60;
+      console.log("total seconds"+seconds);
+
+
+
+QUE.3 PROGRAM TO SEARCH FOR A ELEMENT IN A ARRAY OF STRINGS.
+
+CODE->
+      let city=["bhopal","balaghat","indore","kolkata","jaipur"];
+      let ele="indore";                                           // here we can also take element from the user
+      for(i=0;i<city.length;i++)
+      {
+        if(city[i]==ele)
+         {
+          console.log("element is found");
+          console.log("Its position is"+ (i+1));
+         }
+      }
+
+
+QUE .4 PROGRAM TO DISPLAY ONLY ELEMENTS CONTAINING 'a' IN THEM FROM A ARRAY.
+  
+CODE->
+       let arr=[7,2,5,'a',6,'c'];
+       for(i=0;i<arr.length;i++)
+       {
+        if(arr[i]=='a')
+          {
+           console.log("element is present");
+          }
+        }
+           
+
+
+QUE.5 PRINT AN ARRAY IN REVERSE ORDER.
+
+CODE->
+       let city=["bhopal","balaghat","indore","kolkata","goa"];
+       for(let i=city.length-1;i>=0;i--)
+       {
+        console.log(city[i]);
+       }
