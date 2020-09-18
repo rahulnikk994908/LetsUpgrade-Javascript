@@ -1,0 +1,337 @@
+Question-1)
+Create a array containig five objects with properties(name,age,city,salary)
+   a)Display all the objects in a table
+   b)Create a search functionality for name and city
+   c)Delet button to delet records
+   d)Data is not permanent
+
+CODE----->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .data{
+            height:500px;
+            width:80%;
+            background-color: crimson;
+            margin-left:10%;
+            margin-top:50px;
+            padding:inline-block;
+
+        }
+        .table{
+            width:100%;
+            margin-top:20px;
+        }
+        th,
+        td{
+            height:20px;
+            text-align: center;
+            padding:10px;
+        }
+        .form{
+            margin-top: 20px;
+        }
+    
+    
+        
+    </style>
+</head>
+<body>
+    
+    <div class="data">
+        <h1>Employees</h1>
+        <div class="form">
+        
+            <input type="text"
+ placeholder="seraching by name" id="searchName"onkeyup="searchByname()"  />  
+            <input type="text" placeholder="searching by city" id="searchCity" onkeyup="searchBycity()"/>
+                
+    </div>
+        <table border="1" class="table" cellspacing="0">
+           
+         
+            <thead>
+                <tr>
+                    <th>Srno</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                    <th>Salary</th>
+                    <th>Action</th>
+                        
+                    
+                </tr>
+            </thead>
+            <tbody class="tdata"></tbody>
+        </table>
+    </div>
+
+    <script>
+    let workers=[
+    {
+        name:"Ritik Raj",
+        age:25,
+        city:"Mumbai",
+        salary:30000,
+    },
+    {
+        name:"Mohan Das",
+        age:30,
+        city:"Banglore",
+        salary:35000,
+    },
+    {
+        name:"Shazia Fit",
+        age:26,
+        city:"Delhi",
+        salary:33000,
+    },
+    {
+        name:"Pihu Pal",
+        age:25,
+        city:"Mumbai",
+        salary:28000,
+    },
+    {
+        name:"Kirti Das",
+        age:28,
+        city:"Agra",
+        salary:30000,
+    },
+];
+function display(arrays){
+    let tabledata=" ";
+    
+    arrays.forEach(function(worker,index) {
+        let currentrow= `<tr> 
+        <td>${index+1}</td>
+        <td>${worker.name}</td>
+        <td>${worker.age}</td>
+        <td>${worker.city}</td>
+        <td>${worker.salary}</td>
+        <td>
+        <button onclick='deleteworker(${index})'> delete </button>
+        </td>
+        </tr>`;
+        tabledata+=currentrow;
+        
+    });
+    document.getElementsByClassName("tdata")[0].innerHTML=tabledata;
+    
+}
+display(workers);
+function deleteworker(index){
+    workers.splice(index,1);
+    display(workers);
+
+}
+function searchByname(){
+    let searchValue=document.getElementById("searchName").value;
+    let newdata=workers.filter(function (worker){
+        return(
+            worker.name.toUpperCase().indexOf(searchValue.toUpperCase())!=-1
+        );
+    });
+    display(newdata);
+}
+function searchBycity(){
+    let searchValue1=document.getElementById("searchCity").value;
+    let newdata1=workers.filter(function (worker){
+        return(
+            worker.city.toUpperCase().indexOf(searchValue1.toUpperCase())!=-1
+        );
+    });
+    display(newdata1);
+}
+
+    </script>
+</body>
+</html>
+
+
+QUE.2
+
+
+
+CODE-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .data{
+            height:500px;
+            width:80%
+            background-color: rgb(189, 172, 175);
+            margin-left:5%;
+            margin-top:40px;
+            margin-right:5%;
+            padding:inline-block;
+
+        }
+        .table{
+            width:100%;
+            margin-top:20p;
+            margin-right:=10px;
+        }
+        th,
+        td{
+            height:10px;
+            text-align: center;
+            padding: 10px;
+        }
+        .form{
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="data">
+         <div class="form">
+             <form onsubmit="addbus(event)">
+                <input type="text" required placeholder="Name" id="name"/>
+                <input type="text" required placeholder="Source" id="source"/>
+                <input type="text" required placeholder="Destination" id="destination"/>
+                <input type="text" required placeholder="Number" id="number"/>
+                <input type="text" required placeholder=" passenger Capicity" id="capicity"/>
+                <button type="addbus">add bus</button>
+
+                      <input type="text"
+ placeholder="seraching by source" id="searchsource" onkeyup="searchbysource()"  />  
+            <input type="text" placeholder="searching by destination" id="searchdestination" onkeyup="searchbydestination()"/>
+               </form> 
+         </div>
+    <div class="data">
+        <h1>Buses</h1>
+    
+    <table border="1" class="table" cellspacing="0">
+       
+     
+        <thead>
+            <tr>
+                <th>srno</th>
+                <th>Name</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Number</th>
+                <th>Passenger capicity</th>
+                    
+                
+            </tr>
+        </thead>
+        <tbody class="tdata"></tbody>
+    </table>
+
+    </div>
+    </div>
+    <script>
+window.onload=function(){
+let userbus = [ ];
+
+let buses= {
+			"name":name.value,
+			"source":source.value,
+			"destination":destination.value,
+			"number":number.value,
+			"capicity":capicity.value,
+			
+		}
+        userbus.push(buses);
+if(localStorage.getItem("bus")==null)
+{
+    localStorage.setItem("bus",JSON.stringify(userbus));
+}
+};
+function display(superbus=undefined){
+    let tabledata=""
+    let bus;
+    if(superbus==undefined){
+        bus=JSON.parse(localStorage.getItem("bus"));
+    }
+    else{
+        bus=supperbus;
+    }
+    bus.forEach(function (mybus,index){
+        let currentrow=`<tr>
+        <td>${index+1}</td>
+        <td>${mybus.name}</td>
+        <td>${mybus.source}</td>
+        <td>${mybus.destination}</td>
+        <td>${mybus.number}</td>
+        <td>${mybus.capicity}</td>
+        
+        </tr>`;
+        tabledata+=currentrow;
+        
+    });
+    document.getElementsByClassName("tdata")[0].innerHTML=tabledata;
+}
+function addbus(e){
+    e.preventDefault();
+    let mybus={};
+    let name=document.getElementById("name").value;
+    let source=document.getElementById("source").value;
+    let destination=document.getElementById("destination").value;
+    let number=document.getElementById("number").value;
+    let capicity=document.getElementById("capicity").value;
+    mybus.name=name;
+    mybus.source=source;
+    mybus.destination=destination;
+    mybus.number=number;
+    mybus.capicity=capicity;
+    let bus=JSON.parse(localStorage.getItem("bus"));
+    bus.push(mybus);
+    localStorage.setItem("bus",JSON.stringify(bus));
+    display();
+    document.getElementById("name").value="";
+    document.getElementById("source").value="";
+    document.getElementById("destination").value="";
+    document.getElementById("number").value="";
+    document.getElementById("capicity").value="";
+}
+function searchbysource(){
+    let searchValue=document.getElementById("searchsource").value;
+    let bus=JSON.parse(localStorage.getItem("bus"));
+    let newdata=bus.filter(function(mybus){
+        return(
+            mybus.source.toUpperCase().indexOf(searchValue.toUpperCase())!=-1
+        );
+        
+    });
+    display(newdata);
+}
+    function searchbydestination(){
+        let searchValue=document.getElementById("searchdestination").value;
+        let bus=JSON.parse(localStorage.getItem("bus"));
+        let newdata=bus.filter(function(mybus){
+            return(
+                mybus.destination.toUpperCase().indexOf(searchValue.toUpperCase())!=-1
+            );
+           
+        })
+        display(newdata);
+    } 
+
+</script>
+</body>
+</html>
