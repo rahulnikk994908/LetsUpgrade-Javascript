@@ -1,0 +1,332 @@
+                                          ASSIGNMENT Day 7-8
+
+QUE. CREATE THE BASIC SHOPPING WEBSITE AS DONEIN THE CLASS AND ENHANCE THE WEBSITE BYB ADDING THE FOLLOWING 
+     FUNCTIONALITIES.
+     1.ADD 6 new products so that count ogf product become 12.
+     2.A price filter where you have to add two inputboxes one for max price and other for min price.
+     3.A place which counts the number of product added in the cart.
+     4.If a product is alreadyadded in cart then it shouldshow a message thast this product added to a cart.
+
+CODE->
+     
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .header{
+            height: 70px;
+            width:100%;
+            background-color: darkseagreen;
+            line-height: 70px;
+        }
+        h1{
+            margin-left: 5%;
+            display:inline-block;
+            width:30%;
+            vertical-align: top;
+        }
+        .search{
+            height:70px;
+            width:60%;
+            /*background-color: deeppink;*/
+            display: inline-block;
+        }
+        .search input{
+            height:40px;
+            width:100%;
+            background-color:gainsboro;
+            display:inline-block;
+            border-radius: 5px;
+            border:1px solid darkseagreen;
+            outline: none;
+        }
+        .products{
+            width:100%;
+            height:auto;
+            /*background-color: grey;*/
+        }
+        .productwrapper{
+            height:auto;
+            width:80%;
+           /*background-color: navajowhite;*/
+            margin-left: 10%;
+            margin-bottom: 50px;
+
+        }
+        .product{
+            height:auto;
+            width:25%;
+           /* background-color: mediumturquoise;*/
+            display:inline-block;
+            margin-top: 25px;
+            margin-left: 6.25%;
+            border:1px solid lightblue
+        }
+        .prodimg{
+            height:300px;
+            width:100%;
+            color:orange;
+            overflow:hidden;
+        }
+        .product h3,
+        .product p{
+            padding: 5px;
+            padding-left: 10px;
+        }
+        .product p{
+            color:gray
+        }
+        .button{
+            padding:10px;
+        }
+        .pricefilter{
+            background-color:cadetblue;
+            padding:5px;
+            margin-left:80%;
+            width:180px;
+        }
+        .count input{
+            margin-left: 80%;
+            background-color: cornflowerblue;
+            padding:2px;
+            width:40px;
+        }
+        .count p4{
+            margin-left: 80%;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cart 24x7</h1>
+        <div class="search">
+            <input type="text"  onkeyup="searchProduct(this.value)" placeholder="search for products"/>
+        </div>
+    </div>
+    <div class="products">
+        <div class="pricefilter">
+            <p>Price filter</p>
+            <input type="number" onc placeholder="minimum price"/>
+            <input type="number"  placeholder="maximum price"/>
+    </div>
+    <div class="products">
+        
+        </div>
+        <div class="productwrapper" id="productwrapper">
+            
+            <div class="product">
+                      <div class="prodimg">
+                          <img src="productimages/product1.jpeg" width ="100%"/>
+                      </div>
+                      <h3>Navy blue Tshirt</h3>
+                      <p>Price:499</p>
+                      <p>Size: M</p>
+                      <p>Color:Navy Blue</p>
+                      <p>just like that</p>
+                      <p>
+                          <button>Add To Cart</button>
+                      </p>
+            </div>          
+
+        </div>
+        
+    </div>
+    <div class="products">
+        <div class=count>
+            <p4>Added product</p4>
+        <input type="number" id="n1">
+        </div>
+    </div>
+    <div class="products">
+        <h1>Your Cart</h1>
+        <div class="productwrapper" id ="cart"></div>
+    </div>
+
+    <script>
+    
+    let products=[
+    {
+        name:"Multicolor T-shirt",
+        size:"L",
+        color:"Navy Blue",
+        price:599,
+        image:"product1.jpeg",
+        description:"Cool and good looking Tshirt ",
+    },
+    {
+        name:"Denim Jacket",
+        size:"XL",
+        color:"sky",
+        price:999,
+        image:"product2.jpeg",
+        description:"Dashing and good looking Jacket", 
+
+    },  
+    {
+        name: "Blue top wear",
+        size:"L",
+        color:"Blue",
+        price:799,
+        image:"product3.jpeg",
+        description:"Good looking top wear ",
+    },
+    {
+        name:"Mens Shirt",
+        size:"M",
+        color:"white",
+        price:1199,
+        image:"product4.jpeg",
+        description:"good looking shirt ",
+    },
+    {
+        name:"ladies Kurti",
+        size:"L",
+        color:"Multicolor",
+        price:1499,
+        image:"product5.jpeg",
+        description:"Cool and good looking ", 
+    },
+    {
+        name:"Mens denim jacket",
+        size:"L",
+        color:"Blue",
+        price:599,
+        image:"product6.jpeg",
+        description:"Cool and good looking jacket",
+    } ,
+    {
+        name:"Stylish Jacket",
+        size:"M",
+        color:"Sky Blue",
+        price:899,
+        image:"product7.jpeg",
+        description:"Cool and good looking jacket ",
+    },
+    {
+        name:"baby wear",
+        size:"XS",
+        color:"sky",
+        price:999,
+        image:"product8.jpeg",
+        description:"Dashing and good looking froks", 
+
+    },  
+    {
+        name: "Full selves tshirt",
+        size:"L",
+        color:"Blue",
+        price:799,
+        image:"product9.jpeg",
+        description:"Good looking top wear ",
+    },
+    {
+        name:"Mens Jeans",
+        size:"XL",
+        color:"Grey",
+        price:1399,
+        image:"product10.jpeg",
+        description:"good looking jeans",
+    },
+    {
+        name:"Cropped Jeans",
+        size:"L",
+        color:"Multicolor",
+        price:1499,
+        image:"product11.jpeg",
+        description:"Cool and good looking ", 
+    },
+    {
+        name:"Bottom Wear girl",
+        size:"L",
+        color:"black and white",
+        price:1199,
+        image:"product12.jpeg",
+        description:"Cool and good looking bottom wear",
+    } 
+];
+cart=[];
+function displayProducts(productsData, who="productwrapper"){
+    let productsString="";
+    productsData.forEach(function(product,index){
+        let{name,image,color,description,price,size}=product;
+         if(who=="productwrapper"){
+            productsString+=`<div class="product">
+            <div class="prodimg">
+            <img src="productimages/${image}" width ="100%"/>
+        </div>
+        <h3>${name}</h3>
+        <p>Price:${price}</p>
+        <p>Size: ${size}</p>
+        <p>Color:${color}</p>
+        <p>${description}</p>
+        <p>
+            <button onclick="addTocart(${index})">Add To Cart</button>
+        </p>
+    </div>          `;
+
+         }
+        else if(who=="cart"){
+            productsString+=`<div class="product">
+            <div class="prodimg">
+            <img src="productimages/${image}" width ="100%"/>
+        </div>
+        <h3>${name}</h3>
+        <p>Price:${price}</p>
+        <p>Size: ${size}</p>
+        <p>Color:${color}</p>
+        <p>${description}</p>
+        <p>
+            <button onclick="removeFromcart(${index})">Remove From Cart</button>
+        </p>
+    </div>          `;
+
+        }
+
+    });
+    document.getElementById(who).innerHTML=productsString;
+
+}
+displayProducts(products);
+
+function searchProduct(searchValue){
+    let searchedProducts=products.filter(function(product,index){
+        let searchString=
+        product.name+" "+product.color+" "+product.description
+        return searchString.toUpperCase().indexOf(searchValue.toUpperCase())!=-1;
+    });
+    displayProducts(searchedProducts);
+}
+    let count=0;
+function addTocart(index){
+    
+    cart.push(products[index]);
+    displayProducts(cart,"cart");
+    count++;
+    counter(count);
+}
+function removeFromcart(index){
+    cart.splice(index,1);
+    displayProducts(cart,"cart");
+    count--;
+    counter(count);
+}
+function counter(count){
+    
+    var n1=document.getElementById("n1");
+    n1.value=count;
+}
+
+
+
+    </script>
+</body>
+</html> 
+     
